@@ -17,15 +17,19 @@ use swc_core::{
     },
 };
 
-use crate::visitor::{minify_graphql_str, minify_graphql_tpl};
+use crate::visitor::Minifier;
 
 pub struct MinifyGraphqlVisitor<C: Comments> {
     comments: C,
+    minifier: Minifier,
 }
 
 impl<C: Comments> MinifyGraphqlVisitor<C> {
     fn new(comments: C) -> Self {
-        Self { comments }
+        Self {
+            comments,
+            minifier: Minifier::new(),
+        }
     }
 
     fn is_graphql(&self, span_lo: BytePos) -> bool {
@@ -47,13 +51,13 @@ impl<C: Comments> VisitMut for MinifyGraphqlVisitor<C> {
 
     fn visit_mut_str(&mut self, n: &mut Str) {
         if self.is_graphql(n.span_lo()) {
-            minify_graphql_str(n);
+            self.minifier.minify_str(n);
         }
     }
 
     fn visit_mut_tpl(&mut self, n: &mut Tpl) {
         if self.is_graphql(n.span_lo()) {
-            minify_graphql_tpl(n);
+            self.minifier.minify_tpl(n);
         }
     }
 }

@@ -5,7 +5,9 @@ use graphql_minify::minify;
 
 macro_rules! bench {
     ($group:ident, $id:literal, $input:ident) => {
-        $group.bench_with_input($id, $input, |b, input| b.iter(|| minify(input)));
+        $group.bench_with_input($id, $input, |b, input| {
+            b.iter(|| minify(input, &mut bumpalo::Bump::new()))
+        });
     };
 }
 

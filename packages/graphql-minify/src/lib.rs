@@ -4,6 +4,7 @@
 mod block_string;
 mod lexer;
 
+use bumpalo::Bump;
 use logos::{Logos, Span};
 
 use self::lexer::{parse_block_string, LexingError, Token};
@@ -65,12 +66,11 @@ impl MinifyError {
 /// # Safety
 ///
 /// This function does not use any unsafe code.
-pub fn minify<T: AsRef<str>>(value: T) -> Result<String, MinifyError> {
+pub fn minify<T: AsRef<str>>(value: T, bump: &mut Bump) -> Result<String, MinifyError> {
     let value = value.as_ref();
     let mut lexer = Token::lexer(value);
     let mut result = String::with_capacity(value.len());
     let mut last_token = None;
-    let mut bump = bumpalo::Bump::new();
 
     while let Some(token) = lexer.next() {
         let token = match token {
@@ -89,7 +89,7 @@ pub fn minify<T: AsRef<str>>(value: T) -> Result<String, MinifyError> {
 
         match token {
             Token::BlockStringDelimiter => {
-                result.push_str(&parse_block_string(&mut lexer, &mut bump));
+                result.push_str(&parse_block_string(&mut lexer, bump));
                 bump.reset();
             }
             _ => result.push_str(lexer.slice()),
@@ -144,7 +144,11 @@ fn needs_space(cur_token: &Token, last_token: Option<&Token>) -> bool {
 mod test {
     use indoc::indoc;
 
-    use super::{minify, MinifyError};
+    use super::MinifyError;
+
+    fn minify<T: AsRef<str>>(value: T) -> Result<String, MinifyError> {
+        super::minify(value, &mut bumpalo::Bump::new())
+    }
 
     #[test]
     fn strips_ignored_characters_from_graphql_query_document() {

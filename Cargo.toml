@@ -23,6 +23,7 @@ members = [".", "packages/graphql-minify"]
 crate-type = ["cdylib"]
 
 [dependencies]
+bumpalo = "3.16.0"
 graphql-minify = { version = "0.1.0", path = "packages/graphql-minify" }
 swc_core = { version = "1.0", features = ["ecma_plugin_transform"] }
 tracing = { version = "0.1", features = ["release_max_level_info"] }
