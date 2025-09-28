@@ -32,6 +32,7 @@ tracing = { version = "0.1", features = ["release_max_level_info"] }
 # https://github.com/rust-lang/cargo/issues/2267
 [workspace.metadata.bin]
 cargo-binstall = { version = "1.15.6", locked = true }
+cargo-edit = { version = "0.13.7", locked = true, bins = ["cargo-set-version"] }
 cargo-watch = { version = "8.5.3", locked = true, bins = ["cargo-watch"] }
 
 [profile.release]
