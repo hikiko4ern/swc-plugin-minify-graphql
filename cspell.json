@@ -1,10 +1,23 @@
 {
 	"version": "0.2",
 	"$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
-	"import": ["@cspell/dict-en-gb/cspell-ext.json"],
+	"import": [
+		"@cspell/dict-en-gb/cspell-ext.json"
+	],
 	"language": "en",
-	"enableFiletypes": ["toml"],
-	"dictionaries": ["css", "fonts", "node", "npm", "softwareTerms", "typescript", "rust", "en-gb"],
+	"enableFiletypes": [
+		"toml"
+	],
+	"dictionaries": [
+		"css",
+		"fonts",
+		"node",
+		"npm",
+		"softwareTerms",
+		"typescript",
+		"rust",
+		"en-gb"
+	],
 	"minWordLength": 3,
 	"flagWords": [],
 	"cache": {
@@ -21,6 +34,7 @@
 		"idents",
 		"itertools",
 		"memchr",
+		"quasis",
 		"rustup",
 		"SWC",
 		"whitespaces"

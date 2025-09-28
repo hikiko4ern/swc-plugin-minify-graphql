@@ -1,7 +1,7 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
 	"files": {
-		"ignore": ["**/*.json"]
+		"includes": ["**", "!**/*.json", "!**/*.graphql"]
 	},
 	"vcs": {
 		"enabled": true,
@@ -9,8 +9,12 @@
 		"useIgnoreFile": true,
 		"defaultBranch": "master"
 	},
-	"organizeImports": {
-		"enabled": true
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
 	},
 	"formatter": {
 		"formatWithErrors": true,
@@ -45,7 +49,8 @@
 				"noUselessTernary": "warn",
 				"useArrowFunction": "warn",
 				"useLiteralKeys": "warn",
-				"useOptionalChain": "warn"
+				"useOptionalChain": "warn",
+				"noArguments": "error"
 			},
 			"correctness": {
 				"noInnerDeclarations": "error",
@@ -66,14 +71,12 @@
 				"noGlobalEval": "error"
 			},
 			"style": {
-				"noArguments": "error",
 				"noInferrableTypes": "warn",
 				"noNegationElse": "warn",
 				"noNonNullAssertion": "warn",
 				"noRestrictedGlobals": "error",
 				"noUnusedTemplateLiteral": "warn",
 				"noUselessElse": "warn",
-				"noVar": "error",
 				"useAsConstAssertion": "warn",
 				"useBlockStatements": "warn",
 				"useCollapsedElseIf": "warn",
@@ -84,9 +87,8 @@
 				"useFilenamingConvention": "warn",
 				"useLiteralEnumMembers": "error",
 				"useNumberNamespace": "warn",
-				"useShorthandArrayType": "warn",
 				"useShorthandAssign": "warn",
-				"useSingleCaseStatement": "warn"
+				"useConsistentArrayType": { "level": "warn", "options": { "syntax": "shorthand" } }
 			},
 			"suspicious": {
 				"useAwait": "warn",
@@ -104,7 +106,8 @@
 				"noThenProperty": "error",
 				"noUnsafeNegation": "error",
 				"useDefaultSwitchClauseLast": "warn",
-				"useNamespaceKeyword": "warn"
+				"useNamespaceKeyword": "warn",
+				"noVar": "error"
 			}
 		}
 	}

@@ -9,6 +9,6 @@ repository.workspace = true
 description = "Semantic comparing for GraphQL documents built on top of `apollo_parser::Lexer`"
 
 [dependencies]
-apollo-parser = "0.8.4"
+apollo-parser = "0.8"
 itertools = "0.14"
 textwrap = "0.16"

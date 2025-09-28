@@ -4,7 +4,7 @@ set -xeo pipefail
 
 PROFILE="${1:-release}"
 TRIPLET="wasm32-unknown-unknown"
-WASM="target/$TRIPLET/${PROFILE}/swc_plugin_minify_graphql.wasm"
+WASM="${CARGO_TARGET_DIR:-target}/${TRIPLET}/${PROFILE}/swc_plugin_minify_graphql.wasm"
 OUT_DIR="lib"
 OUT="${OUT_DIR}/swc_plugin_minify_graphql.wasm"
 
@@ -18,7 +18,8 @@ cargo build --target "$TRIPLET" "${profile_arg[@]}"
 
 mkdir -p "$OUT_DIR"
 if [ "$PROFILE" = "release" ]; then
-	pnpm wasm-opt --enable-bulk-memory -O4 "$WASM" -o "$OUT"
+	# spell-checker: ignore nontrapping
+	pnpm wasm-opt --enable-bulk-memory --enable-nontrapping-float-to-int -O4 "$WASM" -o "$OUT"
 else
 	cp "$WASM" "$OUT"
 fi

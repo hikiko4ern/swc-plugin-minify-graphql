@@ -10,12 +10,12 @@ repository = "https://github.com/dan-lee/graphql-minify-rs"
 description = "Minify GraphQL queries"
 
 [dependencies]
-bumpalo = { version = "3.16.0", features = ["collections"] }
-logos = "0.14.4"
-memchr = "2.7.4"
+bumpalo = { version = "3.19.0", features = ["collections"] }
+logos = "0.15.1"
+memchr = "2.7.6"
 
 [dev-dependencies]
-criterion = { version = "0.5.1", features = ["real_blackbox"] }
+criterion = { version = "0.7", features = ["real_blackbox"] }
 graphql_semantic_compare = { version = "*", path = "../graphql_semantic_compare" }
 indoc = "2.0"
 test_each_file = "0.3"

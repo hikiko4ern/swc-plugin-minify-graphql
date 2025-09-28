@@ -1,2 +1,7 @@
 packages:
-  - 'fuzz'
+  - fuzz
+
+onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - dprint
+  - lefthook
