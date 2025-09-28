@@ -4,18 +4,13 @@
 mod str_span;
 mod visitor;
 
-use swc_core::{
-    common::{BytePos, Spanned, comments::Comments},
-    ecma::{
-        ast::{Program, Str, Tpl},
-        transforms::testing::test_inline,
-        visit::{VisitMut, VisitMutWith, noop_visit_mut_type},
-    },
-    plugin::{
-        plugin_transform,
-        proxies::{PluginCommentsProxy, TransformPluginProgramMetadata},
-    },
-};
+use swc_core::common::comments::Comments;
+use swc_core::common::{BytePos, Spanned};
+use swc_core::ecma::ast::{Program, Str, Tpl};
+use swc_core::ecma::transforms::testing::test_inline;
+use swc_core::ecma::visit::{VisitMut, VisitMutWith, noop_visit_mut_type};
+use swc_core::plugin::plugin_transform;
+use swc_core::plugin::proxies::{PluginCommentsProxy, TransformPluginProgramMetadata};
 
 use crate::visitor::Minifier;
 

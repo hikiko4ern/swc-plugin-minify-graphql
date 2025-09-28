@@ -1,9 +1,7 @@
 use std::ops::Deref;
 
-use bumpalo::{
-    Bump,
-    collections::{String as BumpaloString, Vec as BumpaloVec},
-};
+use bumpalo::Bump;
+use bumpalo::collections::{String as BumpaloString, Vec as BumpaloVec};
 use logos::Logos;
 
 #[derive(Logos, Debug, PartialEq)]
@@ -184,7 +182,8 @@ mod test_dedent {
     fn get_dedented_vec(lines: &[&str]) -> Vec<String> {
         use std::cell::RefCell;
 
-        use bumpalo::{Bump, collections::String as BumpaloString};
+        use bumpalo::Bump;
+        use bumpalo::collections::String as BumpaloString;
 
         thread_local! {
             static BUMP: RefCell<Bump> = RefCell::new(Bump::new());
@@ -348,7 +347,8 @@ mod test_print {
     fn print_block_string<I: AsRef<str>>(input: I) -> String {
         use std::cell::RefCell;
 
-        use bumpalo::{Bump, collections::String as BumpaloString};
+        use bumpalo::Bump;
+        use bumpalo::collections::String as BumpaloString;
 
         use super::BlockStringLines;
 

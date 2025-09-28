@@ -24,11 +24,9 @@
 //! [`Punctuator`]: https://spec.graphql.org/October2021/#Punctuator
 // spell-checker: ignore idurl
 
-use swc_core::{
-    atoms::Atom,
-    common::errors::HANDLER,
-    ecma::ast::{Str, Tpl, TplElement},
-};
+use swc_core::atoms::Atom;
+use swc_core::common::errors::HANDLER;
+use swc_core::ecma::ast::{Str, Tpl, TplElement};
 
 use crate::str_span::StrSpan;
 

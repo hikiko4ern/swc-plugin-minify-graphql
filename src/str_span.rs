@@ -1,7 +1,5 @@
-use swc_core::{
-    common::{BytePos, Span},
-    ecma::ast::{Str, TplElement},
-};
+use swc_core::common::{BytePos, Span};
+use swc_core::ecma::ast::{Str, TplElement};
 
 pub trait StrSpan {
     /// returns [`Span`] of the string including quotes
