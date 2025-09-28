@@ -1,7 +1,7 @@
-use bumpalo::{collections::String as BumpaloString, Bump};
+use bumpalo::{Bump, collections::String as BumpaloString};
 use logos::{Lexer, Logos, Span};
 
-use super::block_string::{dedent_block_lines_mut, print_block_string, BlockStringToken};
+use super::block_string::{BlockStringToken, dedent_block_lines_mut, print_block_string};
 use crate::block_string::{BlockStringLines, PrintedBlockString};
 
 #[derive(Debug, PartialEq, Clone, Default)]

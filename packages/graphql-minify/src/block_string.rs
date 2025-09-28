@@ -1,8 +1,8 @@
 use std::ops::Deref;
 
 use bumpalo::{
-    collections::{String as BumpaloString, Vec as BumpaloVec},
     Bump,
+    collections::{String as BumpaloString, Vec as BumpaloVec},
 };
 use logos::Logos;
 
@@ -179,12 +179,12 @@ fn leading_whitespace(s: &str) -> usize {
 
 #[cfg(test)]
 mod test_dedent {
-    use super::{dedent_block_lines_mut, BlockStringLines};
+    use super::{BlockStringLines, dedent_block_lines_mut};
 
     fn get_dedented_vec(lines: &[&str]) -> Vec<String> {
         use std::cell::RefCell;
 
-        use bumpalo::{collections::String as BumpaloString, Bump};
+        use bumpalo::{Bump, collections::String as BumpaloString};
 
         thread_local! {
             static BUMP: RefCell<Bump> = RefCell::new(Bump::new());
@@ -348,7 +348,7 @@ mod test_print {
     fn print_block_string<I: AsRef<str>>(input: I) -> String {
         use std::cell::RefCell;
 
-        use bumpalo::{collections::String as BumpaloString, Bump};
+        use bumpalo::{Bump, collections::String as BumpaloString};
 
         use super::BlockStringLines;
 

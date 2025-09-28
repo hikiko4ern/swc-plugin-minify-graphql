@@ -59,13 +59,13 @@ pub fn cmp_documents<'a, 'b>(left: &'a str, right: &'b str) -> GraphqlSemanticEq
                     }
                 }
                 (Err(left), Err(right)) => {
-                    return GraphqlSemanticEquality::ParsingError(EitherOrBoth::Both(left, right))
+                    return GraphqlSemanticEquality::ParsingError(EitherOrBoth::Both(left, right));
                 }
                 (Err(left), _) => {
-                    return GraphqlSemanticEquality::ParsingError(EitherOrBoth::Left(left))
+                    return GraphqlSemanticEquality::ParsingError(EitherOrBoth::Left(left));
                 }
                 (_, Err(right)) => {
-                    return GraphqlSemanticEquality::ParsingError(EitherOrBoth::Right(right))
+                    return GraphqlSemanticEquality::ParsingError(EitherOrBoth::Right(right));
                 }
             },
             EitherOrBoth::Left(left) => return GraphqlSemanticEquality::LeftNotExhausted(left),

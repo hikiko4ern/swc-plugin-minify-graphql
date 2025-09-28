@@ -7,7 +7,7 @@ mod minify_alloc;
 
 use logos::{Logos, Span};
 
-use crate::lexer::{parse_block_string, LexingError, Token};
+use crate::lexer::{LexingError, Token, parse_block_string};
 pub use crate::minify_alloc::MinifyAllocator;
 
 #[derive(Debug)]
@@ -82,7 +82,7 @@ pub fn minify<T: AsRef<str>>(value: T, alloc: &mut MinifyAllocator) -> Result<St
                 return Err(match e {
                     LexingError::UnknownToken => MinifyError::UnknownToken(lexer.span()),
                     LexingError::UnterminatedString(span) => MinifyError::UnterminatedString(span),
-                })
+                });
             }
         };
 

@@ -5,11 +5,11 @@ mod str_span;
 mod visitor;
 
 use swc_core::{
-    common::{comments::Comments, BytePos, Spanned},
+    common::{BytePos, Spanned, comments::Comments},
     ecma::{
         ast::{Program, Str, Tpl},
         transforms::testing::test_inline,
-        visit::{noop_visit_mut_type, VisitMut, VisitMutWith},
+        visit::{VisitMut, VisitMutWith, noop_visit_mut_type},
     },
     plugin::{
         plugin_transform,

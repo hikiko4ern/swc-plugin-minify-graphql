@@ -1,6 +1,6 @@
 use std::hint::black_box;
 
-use graphql_minify::{minify, MinifyAllocator, MinifyError};
+use graphql_minify::{MinifyAllocator, MinifyError, minify};
 
 const SCHEMA: &str = include_str!("../test_data/valid/github_schema.graphql");
 

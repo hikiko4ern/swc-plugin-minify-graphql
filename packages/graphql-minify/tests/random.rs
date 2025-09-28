@@ -1,5 +1,5 @@
-use graphql_minify::{minify, MinifyAllocator};
-use graphql_semantic_compare::{cmp_documents, GraphqlSemanticEquality};
+use graphql_minify::{MinifyAllocator, minify};
+use graphql_semantic_compare::{GraphqlSemanticEquality, cmp_documents};
 use test_each_file::test_each_file;
 
 test_each_file! { in "./packages/graphql-minify/test_data/valid" as valid => test }

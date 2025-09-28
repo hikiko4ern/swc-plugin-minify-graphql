@@ -4,7 +4,7 @@ members = [".", "packages/graphql-minify", "packages/graphql_semantic_compare"]
 [workspace.package]
 version = "0.2.0"
 authors = ["hikiko4ern"]
-edition = "2021"
+edition = "2024"
 license = "Unlicense OR MIT"
 publish = false
 repository = "https://github.com/hikiko4ern/swc-plugin-minify-graphql"

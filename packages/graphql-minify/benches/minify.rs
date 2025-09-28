@@ -1,7 +1,7 @@
 use std::time::Duration;
 
-use criterion::{criterion_group, criterion_main, Criterion};
-use graphql_minify::{minify, MinifyAllocator};
+use criterion::{Criterion, criterion_group, criterion_main};
+use graphql_minify::{MinifyAllocator, minify};
 
 macro_rules! bench {
     ($group:ident, $id:literal, $input:ident) => {
