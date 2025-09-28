@@ -25,7 +25,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 graphql-minify = { version = "0.1.0", path = "packages/graphql-minify" }
-swc_core = { version = "10.6", features = ["ecma_plugin_transform"] }
+swc_core = { version = "43.0", features = ["ecma_plugin_transform"] }
 tracing = { version = "0.1", features = ["release_max_level_info"] }
 
 # let's use `cargo-run-bin` while there is no built-in solution for
