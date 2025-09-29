@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.0] - 2025-09-29
+
+### BREAKING CHANGES
+
+- update `swc_core` to `43.0`
+
+### Miscellaneous Tasks
+
+- **\[breaking\]** update `swc_core` to `43.0`
+
 ## [0.2.0] - 2025-01-21
 
 ### BREAKING CHANGES
