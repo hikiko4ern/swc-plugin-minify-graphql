@@ -136,6 +136,17 @@ Licensed under either of
 
 at your option.
 
+---
+
+<!-- spell-checker: ignore z3Bv8pFGLdQ8jhW6dwq2x96tzvpiC -->
+<details>
+  <summary>Repository mirrors</summary>
+
+1. on [Codeberg](https://codeberg.org) - [hikiko4ern/swc-plugin-minify-graphql](https://codeberg.org/hikiko4ern/swc-plugin-minify-graphql) (with releases)
+2. on [Radicle](https://radicle.xyz) - [rad:z3Bv8pFGLdQ8jhW6dwq2x96tzvpiC](https://app.radicle.xyz/nodes/rosa.radicle.xyz/rad:z3Bv8pFGLdQ8jhW6dwq2x96tzvpiC) (code only)
+
+</details>
+
 <!-- links -->
 
 [GraphQL]: https://graphql.org
