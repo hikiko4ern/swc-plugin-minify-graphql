@@ -24,7 +24,7 @@
 //! [`Punctuator`]: https://spec.graphql.org/October2021/#Punctuator
 // spell-checker: ignore idurl
 
-use swc_core::atoms::Atom;
+use swc_core::atoms::{Atom, Wtf8Atom};
 use swc_core::common::errors::HANDLER;
 use swc_core::ecma::ast::{Str, Tpl, TplElement};
 
@@ -57,8 +57,10 @@ pub(crate) struct Minifier {
 impl Minifier {
     /// minifies [`Str`]
     pub fn minify_str(&mut self, str: &mut Str) {
-        if let Some(min) = self.try_minify(str.value.as_str(), str) {
-            str.value = Atom::new(min);
+        if let Some(value) = str.value.as_str()
+            && let Some(min) = self.try_minify(value, str)
+        {
+            str.value = Wtf8Atom::new(min);
             str.raw = None;
         }
     }
@@ -73,7 +75,7 @@ impl Minifier {
 
             if let Some(min) = self.try_minify(tpl_el_value(tpl_el), tpl_el) {
                 tpl_el.raw = Atom::new(min);
-                tpl_el.cooked = Some(tpl_el.raw.clone());
+                tpl_el.cooked = Some(tpl_el.raw.clone().into());
             }
 
             return;
@@ -108,7 +110,7 @@ impl Minifier {
                 }
 
                 tpl_el.raw = Atom::new(min);
-                tpl_el.cooked = Some(tpl_el.raw.clone());
+                tpl_el.cooked = Some(tpl_el.raw.clone().into());
             }
 
             has_prev_expr = next_is_expr;
@@ -156,5 +158,9 @@ impl Minifier {
 }
 
 fn tpl_el_value(tpl_el: &TplElement) -> &str {
-    tpl_el.cooked.as_ref().unwrap_or(&tpl_el.raw).as_str()
+    tpl_el
+        .cooked
+        .as_ref()
+        .and_then(|cooked| cooked.as_str())
+        .unwrap_or(tpl_el.raw.as_str())
 }

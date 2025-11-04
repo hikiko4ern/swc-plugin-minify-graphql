@@ -8,7 +8,8 @@ Since WASM plugins are not backward compatible (see [swc-project/swc#5060][swc-w
 
 | plugin version | used `swc_core` version | potentially compatible `swc_core` versions\* |
 | -------------: | ----------------------: | :------------------------------------------- |
-|          `0.3` |                `43.0.1` | `>=40`                                       |
+|          `0.4` |                `46.0.3` | `>=46`                                       |
+|          `0.3` |                `43.0.1` | `>=40 <46`                                   |
 |          `0.2` |                `10.6.1` | `>=10`                                       |
 |          `0.1` |                 `1.0.2` | `>=0.98.0 <10`                               |
 
