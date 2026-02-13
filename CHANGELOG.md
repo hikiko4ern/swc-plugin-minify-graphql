@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.5.0] - 2026-02-13
+
+### BREAKING CHANGES
+
+- update `swc_core` to `55`
+
+### Miscellaneous Tasks
+
+- **\[breaking\]** update `swc_core` to `55`
+
 ## [0.4.0] - 2025-11-04
 
 ### BREAKING CHANGES
