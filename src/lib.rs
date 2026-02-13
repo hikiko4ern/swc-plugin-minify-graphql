@@ -385,3 +385,25 @@ test_inline!(
         const FIELD = /* GraphQL */ `id some ${LONG} FieldName`;
     "
 );
+
+test_inline!(
+    Default::default(),
+    |tr| swc_core::ecma::visit::visit_mut_pass(MinifyGraphqlVisitor::new(tr.comments.clone())),
+    readme_template_literals_with_expressions_invalid_str,
+    r#"
+        const FORMAT = 'long';
+
+        const IMAGE = /* GraphQL */ `
+            id
+            url (format: "${FORMAT}")
+        `;
+    "#,
+    r#"
+        const FORMAT = 'long';
+
+        const IMAGE = /* GraphQL */ `
+            id
+            url (format: "${FORMAT}")
+        `;
+    "#
+);

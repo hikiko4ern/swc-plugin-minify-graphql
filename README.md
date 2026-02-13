@@ -120,6 +120,28 @@ const FIELD = /* GraphQL */ `id some ${LONG} FieldName`;
 const FIELD = /* GraphQL */ `id some${LONG}FieldName`;
 ```
 
+```ts
+const FORMAT = 'long';
+
+const IMAGE = /* GraphQL */ `
+	id
+	url (format: "${FORMAT}")
+`;
+
+// will throw error like this:
+
+//   × failed to minify GraphQL
+//    ╭─[input.js:4:1]
+//  3 │
+//  4 │ ╭─▶         const IMAGE = /* GraphQL */ `
+//  5 │ │               id
+//  6 │ ╰─▶             url (format: "${FORMAT}")
+//    · ╰───                         ┬
+//    · ╰───                         ╰── unknown token at 112
+//  7 │             `;
+//    ╰────
+```
+
 While the minified code may be correct in some cases, this usage is not intended and can be broken at any time.
 
 ### `gql` tag support <!-- spell-checker: ignore gql -->
