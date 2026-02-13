@@ -9,7 +9,7 @@ use apollo_parser::{Error, Lexer, Token};
 pub use itertools::EitherOrBoth;
 use itertools::Itertools as _;
 
-use crate::description::Description;
+use crate::description::{TRIPLE_QUOTES, cmp_description};
 
 #[derive(Debug, PartialEq, Eq)]
 pub enum GraphqlSemanticEquality<'a, 'b> {
@@ -45,8 +45,8 @@ pub fn cmp_documents<'a, 'b>(left: &'a str, right: &'b str) -> GraphqlSemanticEq
 
                     let are_equal =
 						// if both are block strings
-                        if left_data.starts_with(Description::TRIPLE_QUOTES) && right_data.starts_with(Description::TRIPLE_QUOTES) {
-                            Description::new_cleaned(left_data) == Description::new_cleaned(right_data)
+                        if left_data.starts_with(TRIPLE_QUOTES) && right_data.starts_with(TRIPLE_QUOTES) {
+                            cmp_description(left_data, right_data)
                         } else {
                             left_data == right_data
                         };

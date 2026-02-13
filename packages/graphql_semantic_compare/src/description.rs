@@ -1,46 +1,25 @@
-use std::fmt::Display;
-
 use textwrap::dedent;
 
-pub(crate) struct Description {
-    result: *const str,
-    _dedented: String,
-}
+pub(crate) const TRIPLE_QUOTES: &str = r#"""""#;
 
-impl Description {
-    pub(crate) const TRIPLE_QUOTES: &str = r#"""""#;
+pub(crate) fn cmp_description(left: &str, right: &str) -> bool {
+    macro_rules! clean {
+        ($ident:ident) => {
+            let $ident = if $ident.starts_with(TRIPLE_QUOTES) {
+                &$ident[3..$ident.len() - 3]
+            } else if $ident.starts_with('"') {
+                &$ident[1..$ident.len() - 1]
+            } else {
+                $ident
+            };
 
-    pub(crate) fn new_cleaned(src: &str) -> Self {
-        let src = if src.starts_with(Self::TRIPLE_QUOTES) {
-            &src[3..src.len() - 3]
-        } else if src.starts_with('"') {
-            &src[1..src.len() - 1]
-        } else {
-            src
+            let $ident = dedent($ident);
+            let $ident = $ident.trim_matches([' ', '\r', '\n']);
         };
-
-        let dedented = dedent(src);
-        let trimmed = dedented.trim_matches([' ', '\r', '\n']) as *const _;
-
-        Self {
-            _dedented: dedented,
-            result: trimmed,
-        }
     }
 
-    fn as_str(&self) -> &str {
-        unsafe { &*self.result }
-    }
-}
+    clean!(left);
+    clean!(right);
 
-impl PartialEq for Description {
-    fn eq(&self, other: &Self) -> bool {
-        self.as_str() == other.as_str()
-    }
-}
-
-impl Display for Description {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.as_str())
-    }
+    left == right
 }
