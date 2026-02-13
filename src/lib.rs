@@ -1,4 +1,3 @@
-#![warn(clippy::pedantic)]
 #![allow(clippy::default_trait_access, clippy::module_name_repetitions)]
 
 mod str_span;

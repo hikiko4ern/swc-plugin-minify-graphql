@@ -1,0 +1,2 @@
+[target."cfg(true)"]
+rustflags = ["--cfg=swc_ast_unknown"]

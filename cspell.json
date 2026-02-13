@@ -36,6 +36,7 @@
 		"itertools",
 		"memchr",
 		"quasis",
+		"rustflags",
 		"rustup",
 		"SWC",
 		"whitespaces"
@@ -55,6 +56,7 @@
 		"rustfmt",
 		"sed",
 		"textwrap",
+		"unexpected_cfgs",
 		"vec",
 		"xeo"
 	],

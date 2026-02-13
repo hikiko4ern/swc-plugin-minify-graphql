@@ -25,8 +25,20 @@ crate-type = ["cdylib"]
 
 [dependencies]
 graphql-minify = { version = "0.1.0", path = "packages/graphql-minify" }
-swc_core = { version = "46", features = ["ecma_plugin_transform"] }
+swc_core = { version = "55", features = ["ecma_plugin_transform"] }
 tracing = { version = "0.1", features = ["release_max_level_info"] }
+
+[lints]
+workspace = true
+
+[workspace.lints.clippy]
+cargo = "warn"
+pedantic = "warn"
+multiple_crate_versions = { level = "allow", priority = 1 }
+must_use_candidate = { level = "allow", priority = 1 }
+
+[workspace.lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(swc_ast_unknown)'] }
 
 # let's use `cargo-run-bin` while there is no built-in solution for
 # https://github.com/rust-lang/cargo/issues/2267

@@ -1,6 +1,3 @@
-#![warn(clippy::pedantic)]
-#![allow(clippy::must_use_candidate)]
-
 mod block_string;
 mod lexer;
 mod minify_alloc;

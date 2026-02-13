@@ -3,9 +3,6 @@
 //!
 //! [semantic-diff-issue]: https://github.com/apollographql/apollo-rs/issues/356
 
-#![warn(clippy::pedantic)]
-#![allow(clippy::must_use_candidate)]
-
 mod description;
 
 use apollo_parser::{Error, Lexer, Token};

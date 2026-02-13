@@ -4,16 +4,20 @@
 
 ## Compatibility
 
-Since WASM plugins are not backward compatible (see [swc-project/swc#5060][swc-wasm-compat-issue], [Selecting the version - SWC][selecting-swc-core]), use the table below to select the correct plugin version:
+Since WASM plugins are not fully backward compatible (see [swc-project/swc#5060][swc-wasm-compat-issue], [Selecting the version - SWC][selecting-swc-core]), use the table below to select the correct plugin version:
 
 | plugin version | used `swc_core` version | potentially compatible `swc_core` versions\* |
 | -------------: | ----------------------: | :------------------------------------------- |
-|          `0.4` |                `46.0.3` | `>=46`                                       |
+|          `0.5` |                `55.0.2` | `>=47`                                       |
+|          `0.4` |                `46.0.3` | `>=46 <47`                                   |
 |          `0.3` |                `43.0.1` | `>=40 <46`                                   |
 |          `0.2` |                `10.6.1` | `>=10`                                       |
 |          `0.1` |                 `1.0.2` | `>=0.98.0 <10`                               |
 
-\* since this plugin uses a very small part of the API, the compatible version ranges are usually larger
+\* since this plugin uses a very small part of the API, the compatible version ranges are sometimes larger
+
+> [!NOTE]
+> Version `0.5` and later use `swc_ast_unknown`, which should improve plugin compatibility (see this SWC's [blog post](https://blog.swc.rs/2025-11-4-wasm-backward-compatibility) and PR [swc-project/swc#11100](https://github.com/swc-project/swc/pull/11100) for more info)
 
 ## Usage
 
