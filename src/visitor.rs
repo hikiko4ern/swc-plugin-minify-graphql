@@ -71,9 +71,9 @@ impl Minifier {
         // minify the single `TplElement` without additional checks
 
         if tpl.exprs.is_empty() {
-            let tpl_el = unsafe { tpl.quasis.get_unchecked_mut(0) };
-
-            if let Some(min) = self.try_minify(tpl_el_value(tpl_el), tpl_el) {
+            if let Some(tpl_el) = tpl.quasis.get_mut(0)
+                && let Some(min) = self.try_minify(tpl_el_value(tpl_el), tpl_el)
+            {
                 tpl_el.raw = Atom::new(min);
                 tpl_el.cooked = Some(tpl_el.raw.clone().into());
             }
